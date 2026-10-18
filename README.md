@@ -81,8 +81,16 @@
 |---|---|---|
 | ![](images/store_03.png) | ![](images/store_05.png) | ![](images/store_poster.png) |
 
-真机截图（1080×2340）见 `images/raw_*.png`，宣传视频见 `video/promo_60s.mp4`。
-商店文案完整版见 `docs/发布介绍_文件收纳盒_v1.0.0.md`。
+真机截图（1080×2340）见 `images/raw_*.png`。
+
+### 宣传片（60 秒 · 60fps）
+
+| 版本 | 文件 | 说明 |
+|---|---|---|
+| **v6 高流畅度（推荐）** | [`video/promo_60s_v6.mp4`](video/promo_60s_v6.mp4) | 60fps 重渲，录屏段运动补偿补帧，AMD GPU（RX 5700 XT / h264_amf）编码 |
+| v5 快剪 | [`video/promo_60s.mp4`](video/promo_60s.mp4) | 30fps 首版 |
+
+商店文案完整版见 `docs/store-copy.md`。
 
 ---
 
@@ -110,8 +118,8 @@ FileBox/
 ├── apk/        FileBox_v1.0.0_release.apk     # 正式签名包
 ├── source/     FileBox_v1.0.0_src.zip         # Kotlin 源码（不含签名密钥）
 ├── images/     商店图 / 真机截图 / 十皮肤海报
-├── video/      promo_60s.mp4                  # 60 秒宣传片
-└── docs/       商店文案完整版
+└── video/      promo_60s_v6.mp4 / promo_60s.mp4    # 60 秒宣传片
+└── docs/       商店文案完整版 + Pages 落地页
 ```
 
 ## 在线主页与镜像
