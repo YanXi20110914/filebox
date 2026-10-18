@@ -3,169 +3,241 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>文件收纳盒 · 分享即收纳</title>
-<meta name="description" content="439KB 的 Android 文件收纳盒：分享即收纳、八类自动分类、十种皮肤、完全离线、无网络权限。">
+<title>文件收纳盒 — 分享即收纳</title>
+<meta name="description" content="439 KB 的 Android 文件收纳盒。分享即归档，八类自动识别，十种皮肤，不申请网络权限。">
+<meta property="og:title" content="文件收纳盒 — 分享即收纳">
+<meta property="og:description" content="439 KB · 完全离线 · 无网络权限 · 十种皮肤">
+<meta property="og:image" content="icon.png">
+<link rel="icon" href="icon.png">
 <style>
   :root{
-    --bg:#080b12; --bg2:#0f1420; --card:#141a28; --line:#243044;
-    --text:#eef3fb; --sub:#8fa0bf; --accent:#3b6bff; --accent2:#8cb4ff;
+    --paper:#f6f5f2;
+    --ink:#141413;
+    --ink-2:#4a4a46;
+    --muted:#83817a;
+    --line:#dcd8cf;
+    --line-2:#e9e5dc;
+    --accent:#1a4dff;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Consolas,"Liberation Mono",monospace;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
   body{
-    background:var(--bg); color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
-    line-height:1.7; -webkit-font-smoothing:antialiased;
+    margin:0;background:var(--paper);color:var(--ink);
+    font:15px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    font-feature-settings:"tnum" 1,"lnum" 1;
   }
-  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
   a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{width:min(1120px,100% - 48px);margin-inline:auto}
+  .mono{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 
-  /* hero */
-  header{position:relative;overflow:hidden;padding:88px 0 64px;text-align:center}
-  header::before{
-    content:"";position:absolute;inset:-40% -20% auto -20%;height:640px;
-    background:radial-gradient(closest-side,rgba(59,107,255,.32),transparent 70%);
-    filter:blur(10px);z-index:0;
-  }
-  header .wrap{position:relative;z-index:1}
-  .logo{
-    width:96px;height:96px;border-radius:24px;margin:0 auto 26px;
-    background:linear-gradient(160deg,#7aa2ff,#2f52d8);
-    box-shadow:0 18px 48px rgba(59,107,255,.42),inset 0 1px 0 rgba(255,255,255,.5);
-    display:flex;align-items:center;justify-content:center;
-  }
-  .logo svg{width:52px;height:52px}
-  h1{font-size:clamp(30px,5vw,46px);letter-spacing:.5px;font-weight:800}
-  .slogan{margin-top:14px;font-size:clamp(15px,2.2vw,19px);color:var(--sub)}
-  .badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:26px 0 30px}
-  .badge{
-    font-size:13px;color:var(--accent2);border:1px solid var(--line);
-    background:rgba(59,107,255,.08);padding:6px 14px;border-radius:99px;
-  }
-  .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;
-    padding:15px 30px;border-radius:14px;font-weight:700;font-size:16px;
-    transition:transform .16s ease,box-shadow .16s ease;
-  }
-  .btn-primary{background:linear-gradient(160deg,#4a78ff,#2f52d8);box-shadow:0 12px 30px rgba(59,107,255,.4)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(59,107,255,.5)}
-  .btn-ghost{border:1px solid var(--line);color:var(--sub)}
-  .btn-ghost:hover{border-color:var(--accent);color:var(--text)}
-  .meta{margin-top:18px;font-size:13px;color:#5f708c}
+  /* 顶栏 */
+  .nav{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(246,245,242,.9);backdrop-filter:saturate(160%) blur(8px);z-index:20}
+  .nav-in{display:flex;align-items:center;gap:12px;height:60px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:650;letter-spacing:-.01em}
+  .brand img{width:26px;height:26px;border-radius:7px;box-shadow:0 1px 2px rgba(0,0,0,.18)}
+  .nav .ver{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em;padding-left:10px;border-left:1px solid var(--line);margin-left:2px}
+  .nav .spacer{flex:1}
+  .nav a.dl{font-size:13.5px;font-weight:600;border-bottom:1px solid var(--ink);padding-bottom:1px}
+  .nav a.gh{font-size:13.5px;color:var(--ink-2)}
+  .nav a.gh:hover,.nav a.dl:hover{color:var(--accent);border-color:var(--accent)}
 
-  section{padding:64px 0;border-top:1px solid rgba(36,48,68,.6)}
-  h2{font-size:clamp(22px,3.4vw,30px);font-weight:800;margin-bottom:8px}
-  .lead{color:var(--sub);margin-bottom:34px;font-size:15px}
+  /* 首屏 */
+  .hero{padding:76px 0 64px;border-bottom:1px solid var(--line)}
+  .hero-in{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center}
+  .eyebrow{display:flex;gap:10px;align-items:center;margin-bottom:22px}
+  .eyebrow i{width:22px;height:1px;background:var(--ink);display:inline-block}
+  h1{margin:0 0 18px;font-size:clamp(38px,5.6vw,68px);line-height:1.02;letter-spacing:-.045em;font-weight:700}
+  .lede{margin:0;font-size:16px;line-height:1.75;color:var(--ink-2);max-width:34em}
+  .lede b{font-weight:650;color:var(--ink)}
+  .cta{display:flex;gap:20px;align-items:center;margin-top:32px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;padding:13px 22px;border-radius:9px;font-weight:620;font-size:14.5px;transition:background .18s ease,transform .18s ease}
+  .btn:hover{background:var(--accent);transform:translateY(-1px)}
+  .btn span{font-family:var(--mono);font-size:12px;opacity:.72;font-weight:400}
+  .link{font-size:14px;color:var(--ink-2);border-bottom:1px solid var(--line)}
+  .link:hover{color:var(--accent);border-color:var(--accent)}
+  .note{margin-top:16px;font-size:12.5px;color:var(--muted)}
 
-  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-  .card{
-    background:linear-gradient(180deg,var(--card),#111725);
-    border:1px solid var(--line);border-radius:18px;padding:22px;
+  .stage{position:relative;display:flex;gap:16px;justify-content:flex-end;align-items:flex-start}
+  .stage::before{content:"";position:absolute;inset:-18% -12% -12% -6%;background-image:radial-gradient(circle at 1px 1px,rgba(20,20,19,.16) 1px,transparent 0);background-size:14px 14px;opacity:.5;-webkit-mask-image:radial-gradient(ellipse at 60% 40%,#000 25%,transparent 72%);mask-image:radial-gradient(ellipse at 60% 40%,#000 25%,transparent 72%);z-index:0;pointer-events:none}
+  .phone{position:relative;z-index:1;border-radius:18px;overflow:hidden;border:1px solid rgba(20,20,19,.1);box-shadow:0 24px 50px -30px rgba(20,20,19,.55)}
+  .phone img{width:100%}
+  .p1{width:52%}
+  .p2{width:44%;margin-top:58px}
+
+  /* 规格条 */
+  .spec{border-bottom:1px solid var(--line)}
+  .spec-in{display:grid;grid-template-columns:repeat(4,1fr)}
+  .spec-in div{padding:26px 0;border-left:1px solid var(--line)}
+  .spec-in div:first-child{border-left:0;padding-left:0}
+  .spec-in b{display:block;font-family:var(--mono);font-size:23px;letter-spacing:-.02em;color:var(--ink);font-weight:500}
+  .spec-in span{display:block;margin-top:4px;font-size:12.5px;color:var(--muted)}
+
+  /* 区块 */
+  section{padding:72px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:38px}
+  h2{margin:0;font-size:clamp(23px,3vw,31px);letter-spacing:-.025em;font-weight:680}
+  .sec-head p{margin:8px 0 0;color:var(--ink-2);font-size:14.5px;max-width:38em}
+
+  .feats{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+  .feat{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:19px 0;border-top:1px solid var(--line)}
+  .feat .n{font-family:var(--mono);font-size:11.5px;color:var(--muted);padding-top:3px;letter-spacing:.04em}
+  .feat h3{margin:0 0 3px;font-size:14.5px;font-weight:650;letter-spacing:-.005em}
+  .feat p{margin:0;font-size:13.5px;line-height:1.6;color:var(--ink-2)}
+
+  /* 截图 */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  figure{margin:0}
+  figure img{border:1px solid rgba(20,20,19,.09);border-radius:14px;box-shadow:0 18px 40px -32px rgba(20,20,19,.6)}
+  figcaption{margin-top:10px;display:flex;gap:8px;align-items:baseline;font-size:12.5px;color:var(--ink-2)}
+  figcaption i{font-family:var(--mono);font-size:10.5px;font-style:normal;color:var(--muted)}
+
+  /* 安装 */
+  .install{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;border-top:1px solid var(--line);padding-top:64px}
+  .install p{margin:0 0 14px;color:var(--ink-2);font-size:14.5px}
+  dl{margin:0}
+  dl div{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-top:1px solid var(--line)}
+  dl div:last-child{border-bottom:1px solid var(--line)}
+  dt{color:var(--muted);font-size:13px}
+  dd{margin:0;font-family:var(--mono);font-size:12.5px;color:var(--ink);text-align:right;word-break:break-all}
+  .sha{margin-top:20px;font-size:12px;color:var(--muted);line-height:1.8}
+  .sha code{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);word-break:break-all}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 56px}
+  .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--muted)}
+  .foot a{border-bottom:1px solid var(--line-2)}
+  .foot a:hover{color:var(--accent);border-color:var(--accent)}
+
+  @media (max-width:900px){
+    .hero-in{grid-template-columns:1fr;gap:44px}
+    .stage{justify-content:flex-start}
+    .p1{width:56%}.p2{width:44%;margin-top:34px}
+    .spec-in{grid-template-columns:1fr 1fr}
+    .spec-in div:nth-child(3){border-left:0;padding-left:0}
+    .feats{grid-template-columns:1fr;gap:0}
+    .gallery{grid-template-columns:repeat(2,1fr)}
+    .install{grid-template-columns:1fr;gap:34px}
   }
-  .card h3{font-size:16px;margin-bottom:8px}
-  .card p{font-size:14px;color:var(--sub)}
-  .ico{width:34px;height:34px;border-radius:10px;background:rgba(59,107,255,.16);
-       display:flex;align-items:center;justify-content:center;margin-bottom:14px;
-       color:var(--accent2);font-weight:800;font-size:15px}
-
-  .shots{display:flex;gap:18px;overflow-x:auto;padding:6px 2px 18px;scroll-snap-type:x mandatory}
-  .shots img{
-    width:250px;border-radius:20px;border:1px solid var(--line);
-    scroll-snap-align:start;background:#fff;
+  @media (max-width:540px){
+    .wrap{width:min(1120px,100% - 32px)}
+    .hero{padding:52px 0 48px}
+    section{padding:52px 0}
+    .gallery{gap:12px}
+    .nav .ver,.nav a.gh{display:none}
   }
-  .shots::-webkit-scrollbar{height:8px}
-  .shots::-webkit-scrollbar-thumb{background:#22304a;border-radius:9px}
-
-  .spec{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));font-size:14px}
-  .spec div{display:flex;justify-content:space-between;padding:12px 16px;background:var(--card);
-            border:1px solid var(--line);border-radius:12px;color:var(--sub)}
-  .spec b{color:var(--text);font-weight:600}
-  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--accent2);
-       word-break:break-all}
-  footer{padding:44px 0 60px;text-align:center;color:#5f708c;font-size:13px}
-  footer a{color:var(--accent2)}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap">
-    <div class="logo">
-      <svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 14h12l4 5h20v19a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V14z"/>
-        <path d="M6 14V9a2 2 0 0 1 2-2h9l4 5h17a2 2 0 0 1 2 2v5"/>
-      </svg>
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="./"><img src="icon.png" alt="文件收纳盒图标">文件收纳盒</a>
+    <span class="ver">v1.0.0 · 42</span>
+    <span class="spacer"></span>
+    <a class="gh" href="https://github.com/YanXi20110914/filebox">GitHub</a>
+    <a class="dl" href="https://github.com/YanXi20110914/filebox/releases/download/v1.0.0/FileBox_v1.0.0_release.apk">下载</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <div class="eyebrow mono"><i></i>Android 7.0+ · 439 KB · 完全离线</div>
+      <h1>分享的那一刻，<br>文件就归好类</h1>
+      <p class="lede">
+        在微信、浏览器、文件管理器里点分享，选中文件收纳盒——它识别类型、落进对应目录、遇到同名自动补时间。
+        <b>不联网，不常驻，不打扰。</b>
+      </p>
+      <div class="cta">
+        <a class="btn" href="https://github.com/YanXi20110914/filebox/releases/download/v1.0.0/FileBox_v1.0.0_release.apk">下载 APK <span>439 KB</span></a>
+        <a class="link" href="https://github.com/YanXi20110914/filebox">查看源码</a>
+      </div>
+      <p class="note">正式签名 RSA 2048 / 25 年 · 包名 com.filebox.collect · 装过测试版需先卸载</p>
     </div>
-    <h1>文件收纳盒</h1>
-    <p class="slogan">分享即收纳 —— 手机文件自动分类归档，439KB 极简存在</p>
-    <div class="badges">
-      <span class="badge">439 KB</span>
-      <span class="badge">完全离线</span>
-      <span class="badge">无网络权限</span>
-      <span class="badge">十种皮肤</span>
-      <span class="badge">Android 7.0+</span>
+
+    <div class="stage">
+      <div class="phone p1"><img src="img/home.jpg" alt="文件收纳盒主界面" width="540" height="1110"></div>
+      <div class="phone p2"><img src="img/terminal.jpg" alt="终端皮肤" width="540" height="1110"></div>
     </div>
-    <div class="cta">
-      <a class="btn btn-primary" href="https://github.com/YanXi20110914/filebox/releases/download/v1.0.0/FileBox_v1.0.0_release.apk">
-        ⬇ 下载 APK · 439KB
-      </a>
-      <a class="btn btn-ghost" href="https://github.com/YanXi20110914/filebox">查看源码 →</a>
-    </div>
-    <p class="meta">v1.0.0 Spark (42) ｜ 正式签名 RSA 2048 / 25 年 ｜ 包名 com.filebox.collect</p>
   </div>
 </header>
 
+<div class="spec">
+  <div class="wrap spec-in">
+    <div><b>439 KB</b><span>安装包体积</span></div>
+    <div><b>0</b><span>网络权限</span></div>
+    <div><b>8</b><span>自动识别分类</span></div>
+    <div><b>10</b><span>界面皮肤</span></div>
+  </div>
+</div>
+
 <section>
   <div class="wrap">
-    <h2>你的手机文件，值得一间整洁的房间</h2>
-    <p class="lead">截图、文档、安装包、压缩包……每一次"下载"都在给存储空间添堵。文件收纳盒只做一件事：让你顺手把文件放对地方。</p>
-    <div class="grid">
-      <div class="card"><div class="ico">收</div><h3>分享即收纳</h3><p>微信、浏览器、文件管理器里点分享就能归档，自动识别类型，全程不超过 3 秒。</p></div>
-      <div class="card"><div class="ico">类</div><h3>八类自动识别</h3><p>图片 / 文档 / 视频 / 音频 / 安装包 / 压缩包 / 字体 / 其他，还支持自定义分类规则。</p></div>
-      <div class="card"><div class="ico">名</div><h3>链式防覆盖命名</h3><p>同名不覆盖：跨年补年份、同年补日期、同日补时分秒，文件再多也不丢。</p></div>
-      <div class="card"><div class="ico">肤</div><h3>十种界面皮肤</h3><p>经典白到工作台，布局重排、桌面图标联动、专属 3D 开场动画，连状态栏都换装。</p></div>
-      <div class="card"><div class="ico">搜</div><h3>全局搜索 + 历史</h3><p>按名称、分类、来源、时间四维筛选；星标与备注，重要文件一眼定位。</p></div>
-      <div class="card"><div class="ico">记</div><h3>文本速记</h3><p>微信里看到一段有用的文字，分享给收纳盒就直接存成 .txt 笔记。</p></div>
-      <div class="card"><div class="ico">私</div><h3>不联网的隐私</h3><p>未申请 INTERNET 权限，物理级离线；数据只存本机，卸载即彻底删除。</p></div>
-      <div class="card"><div class="ico">轻</div><h3>439KB 且零后台</h3><p>一张照片的几分之一，不常驻通知栏、不注册自启、不开屏广告。</p></div>
+    <div class="sec-head">
+      <div>
+        <h2>它做的事很少，但都做完了</h2>
+        <p>没有信息流、没有会员、没有推送。只有一条链路：分享 → 归档 → 可查。</p>
+      </div>
+    </div>
+
+    <div class="feats">
+      <div class="feat"><div class="n">01</div><div><h3>系统分享直达</h3><p>任意应用点分享就能唤起，面板里分类已自动选中，点一下即完成。</p></div></div>
+      <div class="feat"><div class="n">02</div><div><h3>八类自动识别</h3><p>图片 / 文档 / 视频 / 音频 / 安装包 / 压缩包 / 字体 / 其他，还能加自定义规则。</p></div></div>
+      <div class="feat"><div class="n">03</div><div><h3>链式防覆盖命名</h3><p>同名不覆盖：跨年补年份、同年补日期、同日补时分秒。</p></div></div>
+      <div class="feat"><div class="n">04</div><div><h3>来源记忆</h3><p>勾一次「记住这个来源」，之后同样的分享静默归档，不再弹窗。</p></div></div>
+      <div class="feat"><div class="n">05</div><div><h3>十种皮肤</h3><p>经典白到工作台，布局重排、图标联动、开场动画全套换装。</p></div></div>
+      <div class="feat"><div class="n">06</div><div><h3>搜索与历史</h3><p>按名称、分类、来源、时间筛选；支持星标与备注。</p></div></div>
+      <div class="feat"><div class="n">07</div><div><h3>文本速记</h3><p>微信里的一段文字，分享过来就存成 .txt，进文档分类。</p></div></div>
+      <div class="feat"><div class="n">08</div><div><h3>SAF 免权限引擎</h3><p>不索要「所有文件访问」，只在你指定的目录里工作。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><h2>界面</h2><p>真机截图，1080 × 2340。</p></div>
+    </div>
+    <div class="gallery">
+      <figure><img src="img/home.jpg" alt="分享即收纳"><figcaption><i>01</i>分享即收纳</figcaption></figure>
+      <figure><img src="img/save.jpg" alt="三秒归档"><figcaption><i>02</i>三秒归档</figcaption></figure>
+      <figure><img src="img/dark.jpg" alt="深夜模式"><figcaption><i>03</i>深夜模式</figcaption></figure>
+      <figure><img src="img/skins.jpg" alt="十款皮肤"><figcaption><i>04</i>十款皮肤</figcaption></figure>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="wrap">
-    <h2>界面预览</h2>
-    <p class="lead">真机截图，1080×2340。</p>
-    <div class="shots">
-      <img src="https://raw.githubusercontent.com/YanXi20110914/filebox/main/images/store_01.png" alt="分享即收纳">
-      <img src="https://raw.githubusercontent.com/YanXi20110914/filebox/main/images/store_02.png" alt="三秒归档">
-      <img src="https://raw.githubusercontent.com/YanXi20110914/filebox/main/images/store_03.png" alt="细节可调">
-      <img src="https://raw.githubusercontent.com/YanXi20110914/filebox/main/images/store_04.png" alt="深夜模式">
-      <img src="https://raw.githubusercontent.com/YanXi20110914/filebox/main/images/store_05.png" alt="终端皮肤">
-      <img src="https://raw.githubusercontent.com/YanXi20110914/filebox/main/images/store_poster.png" alt="十款皮肤" style="width:290px">
+  <div class="wrap install">
+    <div>
+      <div class="sec-head" style="margin-bottom:22px"><div><h2>安装</h2></div></div>
+      <p>下载 APK 后，系统会提示「允许安装未知应用」，允许即可安装。</p>
+      <p>系统要求 Android 7.0（API 24）及以上。装过测试签名的设备请先卸载旧版，正式签名无法覆盖安装。</p>
+      <p>不申请网络权限；拒绝通知权限也能正常使用，只是保存完成时不提醒。</p>
     </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>安装</h2>
-    <p class="lead">下载后允许「安装未知应用」即可。系统要求 Android 7.0+；装过测试签名的设备请先卸载旧版。</p>
-    <div class="spec">
-      <div><span>版本</span><b>1.0.0 (42)</b></div>
-      <div><span>安装包</span><b>439 KB</b></div>
-      <div><span>最低系统</span><b>Android 7.0</b></div>
-      <div><span>网络权限</span><b>未申请</b></div>
+    <div>
+      <dl>
+        <div><dt>版本</dt><dd>1.0.0 (42)</dd></div>
+        <div><dt>安装包</dt><dd>439 KB</dd></div>
+        <div><dt>最低系统</dt><dd>Android 7.0</dd></div>
+        <div><dt>网络权限</dt><dd>未申请</dd></div>
+        <div><dt>签名</dt><dd>RSA 2048 · 25 年</dd></div>
+      </dl>
+      <p class="sha">SHA-256<br><code>b2603dede355c679ab2ce1ce78a813b451d93ec63514bbf7f3fc7c28e339951c</code></p>
     </div>
-    <p class="meta" style="margin-top:18px">SHA-256：<code>b2603dede355c679ab2ce1ce78a813b451d93ec63514bbf7f3fc7c28e339951c</code></p>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    <p>开发者 晏席 ｜ <a href="https://github.com/YanXi20110914/filebox">GitHub 仓库</a> ｜ <a href="https://github.com/YanXi20110914/filebox/releases">更新日志</a></p>
-    <p style="margin-top:8px">文件收纳盒 v1.0.0 Spark · 完全离线 · 无广告无追踪</p>
+  <div class="wrap foot">
+    <span>文件收纳盒 v1.0.0 Spark · 开发者 晏席</span>
+    <span>
+      <a href="https://github.com/YanXi20110914/filebox">源码</a> ·
+      <a href="https://github.com/YanXi20110914/filebox/releases">更新日志</a> ·
+      <a href="https://github.com/YanXi20110914/filebox/blob/main/docs/store-copy.md">商店文案</a>
+    </span>
   </div>
 </footer>
 
