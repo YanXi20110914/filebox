@@ -8,6 +8,8 @@
   <a href="https://github.com/YanXi20110914/filebox/releases/download/v1.0.0/FileBox_v1.0.0_release.apk"><b>⬇ 下载 APK（439KB）</b></a>
   &nbsp;·&nbsp;
   <a href="https://yanxi20110914.github.io/filebox/">在线主页</a>
+  &nbsp;·&nbsp;
+  <a href="https://www.axureshow.com/project/9sm6pBaV/">镜像预览（国内）</a>
 </p>
 
 ![主界面](images/store_01.png)
@@ -112,9 +114,11 @@ FileBox/
 └── docs/       商店文案完整版
 ```
 
-## 在线主页
+## 在线主页与镜像
 
-GitHub Pages：<https://yanxi20110914.github.io/filebox/> （源码在 `docs/index.html`）
+- GitHub Pages：<https://yanxi20110914.github.io/filebox/>
+- 国内镜像（AxureShow）：<https://www.axureshow.com/project/9sm6pBaV/> —— 该页同样**内嵌了 APK**，点「下载」直接保存
+- 离线单文件版：`docs/index.html` 即镜像页本体，双击本地打开也能下载安装包
 
 ## 签名
 
