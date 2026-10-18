@@ -11,13 +11,13 @@
 <link rel="icon" href="icon.png">
 <style>
   :root{
-    --paper:#f6f5f2;
-    --ink:#141413;
-    --ink-2:#4a4a46;
-    --muted:#83817a;
-    --line:#dcd8cf;
-    --line-2:#e9e5dc;
-    --accent:#1a4dff;
+    --paper:#f7f6f2;
+    --ink:#1b1b19;
+    --ink2:#4f4f4b;
+    --muted:#8a877f;
+    --line:#e2ded5;
+    --line2:#eeebe3;
+    --accent:#2148ff;
     --mono:ui-monospace,SFMono-Regular,"SF Mono",Consolas,"Liberation Mono",monospace;
   }
   *{box-sizing:border-box}
@@ -31,91 +31,120 @@
   a{color:inherit;text-decoration:none}
   img{display:block;max-width:100%}
   .wrap{width:min(1120px,100% - 48px);margin-inline:auto}
-  .mono{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .mono{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 
   /* 顶栏 */
-  .nav{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(246,245,242,.9);backdrop-filter:saturate(160%) blur(8px);z-index:20}
-  .nav-in{display:flex;align-items:center;gap:12px;height:60px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:650;letter-spacing:-.01em}
-  .brand img{width:26px;height:26px;border-radius:7px;box-shadow:0 1px 2px rgba(0,0,0,.18)}
-  .nav .ver{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em;padding-left:10px;border-left:1px solid var(--line);margin-left:2px}
+  .nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(247,246,242,.9);backdrop-filter:saturate(140%) blur(10px)}
+  .nav-in{display:flex;align-items:center;gap:11px;height:58px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:650;font-size:15px;letter-spacing:-.01em}
+  .brand img{width:24px;height:24px;border-radius:6px}
+  .nav .ver{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.06em;padding-left:11px;border-left:1px solid var(--line)}
   .nav .spacer{flex:1}
   .nav a.dl{font-size:13.5px;font-weight:600;border-bottom:1px solid var(--ink);padding-bottom:1px}
-  .nav a.gh{font-size:13.5px;color:var(--ink-2)}
+  .nav a.gh{font-size:13.5px;color:var(--ink2)}
   .nav a.gh:hover,.nav a.dl:hover{color:var(--accent);border-color:var(--accent)}
 
   /* 首屏 */
-  .hero{padding:72px 0 64px;border-bottom:1px solid var(--line)}
-  .hero-in{display:grid;grid-template-columns:minmax(0,1fr) 396px;gap:56px;align-items:center}
-  .eyebrow{display:flex;gap:10px;align-items:center;margin-bottom:24px}
-  .eyebrow i{width:22px;height:1px;background:var(--ink);display:inline-block}
-  h1{margin:0 0 20px;font-size:clamp(38px,5.4vw,66px);line-height:1.03;letter-spacing:-.045em;font-weight:700}
-  .lede{margin:0;font-size:16px;line-height:1.78;color:var(--ink-2);max-width:32em}
+  .hero{padding:64px 0 56px;border-bottom:1px solid var(--line)}
+  .hero-in{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:56px;align-items:start}
+  .eyebrow{display:flex;gap:10px;align-items:center;margin-bottom:20px;margin-top:6px}
+  .eyebrow i{width:20px;height:1px;background:var(--ink);display:inline-block}
+  h1{margin:0 0 18px;font-size:clamp(34px,4.6vw,58px);line-height:1.08;letter-spacing:-.042em;font-weight:700}
+  .lede{margin:0;font-size:15.5px;line-height:1.8;color:var(--ink2);max-width:30em}
   .lede b{font-weight:650;color:var(--ink)}
-  .cta{display:flex;gap:22px;align-items:center;margin-top:34px;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;padding:13px 22px;border-radius:9px;font-weight:620;font-size:14.5px;transition:background .18s ease,transform .18s ease}
+  .cta{display:flex;gap:20px;align-items:center;margin-top:30px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:8px;font-weight:620;font-size:14px;transition:background .18s ease,transform .18s ease}
   .btn:hover{background:var(--accent);transform:translateY(-1px)}
-  .btn span{font-family:var(--mono);font-size:12px;opacity:.72;font-weight:400}
-  .link{font-size:14px;color:var(--ink-2);border-bottom:1px solid var(--line)}
+  .btn span{font-family:var(--mono);font-size:11.5px;opacity:.7;font-weight:400;letter-spacing:.04em}
+  .link{font-size:13.5px;color:var(--ink2);border-bottom:1px solid var(--line)}
   .link:hover{color:var(--accent);border-color:var(--accent)}
-  .note{margin-top:18px;font-size:12.5px;color:var(--muted)}
+  .note{margin-top:16px;font-size:12px;line-height:1.7;color:var(--muted)}
 
   .stage{position:relative;display:flex;flex-direction:column;align-items:flex-end}
-  .stage::before{content:"";position:absolute;inset:-14% -18% -10% -22%;background-image:radial-gradient(circle at 1px 1px,rgba(20,20,19,.14) 1px,transparent 0);background-size:14px 14px;opacity:.55;-webkit-mask-image:radial-gradient(ellipse at 65% 45%,#000 30%,transparent 74%);mask-image:radial-gradient(ellipse at 65% 45%,#000 30%,transparent 74%);z-index:0;pointer-events:none}
-  .phone{position:relative;z-index:1;width:320px;border-radius:26px;overflow:hidden;border:3px solid #1b1b1a;box-shadow:0 46px 80px -50px rgba(20,20,19,.75),0 3px 10px rgba(20,20,19,.08)}
+  .stage::before{content:"";position:absolute;inset:-10% -16% -8% -18%;background-image:radial-gradient(circle at 1px 1px,rgba(27,27,25,.13) 1px,transparent 0);background-size:13px 13px;opacity:.5;-webkit-mask-image:radial-gradient(ellipse at 68% 46%,#000 26%,transparent 72%);mask-image:radial-gradient(ellipse at 68% 46%,#000 26%,transparent 72%);z-index:0;pointer-events:none}
+  .phone{position:relative;z-index:1;width:306px;border-radius:16px;overflow:hidden;background:#fff;border:1px solid rgba(27,27,25,.07);box-shadow:0 28px 56px -36px rgba(27,27,25,.55),0 1px 2px rgba(27,27,25,.05)}
   .phone img{width:100%;height:auto;display:block}
-  .stage-cap{position:relative;z-index:1;margin:16px 4px 0;font-size:10.5px;letter-spacing:.12em;color:var(--muted)}
+  .stage-cap{position:relative;z-index:1;margin:14px 2px 0;font-size:10px;letter-spacing:.14em;color:var(--muted);font-family:var(--mono);text-transform:uppercase}
 
   /* 规格条 */
   .spec{border-bottom:1px solid var(--line)}
   .spec-in{display:grid;grid-template-columns:repeat(4,1fr)}
-  .spec-in div{padding:26px 0;border-left:1px solid var(--line)}
+  .spec-in div{padding:22px 0 20px 26px;border-left:1px solid var(--line)}
   .spec-in div:first-child{border-left:0;padding-left:0}
-  .spec-in b{display:block;font-family:var(--mono);font-size:23px;letter-spacing:-.02em;color:var(--ink);font-weight:500}
-  .spec-in span{display:block;margin-top:4px;font-size:12.5px;color:var(--muted)}
+  .spec-in b{display:block;font-family:var(--mono);font-size:21px;letter-spacing:-.02em;color:var(--ink);font-weight:500;line-height:1.2}
+  .spec-in span{display:block;margin-top:5px;font-size:11.5px;letter-spacing:.02em;color:var(--muted)}
 
   /* 区块 */
-  section{padding:72px 0}
-  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:38px}
-  h2{margin:0;font-size:clamp(23px,3vw,31px);letter-spacing:-.025em;font-weight:680}
-  .sec-head p{margin:8px 0 0;color:var(--ink-2);font-size:14.5px;max-width:38em}
+  section{padding:60px 0}
+  h2{margin:0;font-size:clamp(22px,2.6vw,28px);letter-spacing:-.028em;font-weight:680;line-height:1.3}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:30px}
+  .sec-head p{margin:8px 0 0;color:var(--ink2);font-size:14px;max-width:36em}
 
-  .feats{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
-  .feat{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:19px 0;border-top:1px solid var(--line)}
-  .feat .n{font-family:var(--mono);font-size:11.5px;color:var(--muted);padding-top:3px;letter-spacing:.04em}
-  .feat h3{margin:0 0 3px;font-size:14.5px;font-weight:650;letter-spacing:-.005em}
-  .feat p{margin:0;font-size:13.5px;line-height:1.6;color:var(--ink-2)}
+  .feats{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+  .feat{display:grid;grid-template-columns:30px 1fr;gap:12px;padding:16px 0;border-top:1px solid var(--line)}
+  .feat .n{font-family:var(--mono);font-size:10.5px;color:var(--muted);padding-top:4px;letter-spacing:.06em}
+  .feat h3{margin:0 0 2px;font-size:14px;font-weight:650;letter-spacing:-.005em}
+  .feat p{margin:0;font-size:13px;line-height:1.65;color:var(--ink2)}
 
   /* 安装 */
-  .install{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;border-top:1px solid var(--line);padding-top:64px}
-  .install p{margin:0 0 14px;color:var(--ink-2);font-size:14.5px}
+  .install{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;border-top:1px solid var(--line);padding-top:52px}
+  .install p{margin:0 0 12px;color:var(--ink2);font-size:14px;line-height:1.75}
   dl{margin:0}
-  dl div{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-top:1px solid var(--line)}
+  dl div{display:flex;justify-content:space-between;gap:18px;padding:11px 0;border-top:1px solid var(--line)}
   dl div:last-child{border-bottom:1px solid var(--line)}
-  dt{color:var(--muted);font-size:13px}
-  dd{margin:0;font-family:var(--mono);font-size:12.5px;color:var(--ink);text-align:right;word-break:break-all}
-  .sha{margin-top:20px;font-size:12px;color:var(--muted);line-height:1.8}
-  .sha code{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);word-break:break-all}
+  dt{color:var(--muted);font-size:12.5px}
+  dd{margin:0;font-family:var(--mono);font-size:12px;color:var(--ink);text-align:right;word-break:break-all}
+  .sha{margin-top:18px;font-size:11.5px;color:var(--muted);line-height:1.85}
+  .sha code{font-family:var(--mono);font-size:11px;color:var(--ink2);word-break:break-all}
 
-  footer{border-top:1px solid var(--line);padding:34px 0 56px}
-  .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--muted)}
-  .foot a{border-bottom:1px solid var(--line-2)}
+  footer{border-top:1px solid var(--line);padding:28px 0 48px}
+  .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--muted)}
+  .foot a{border-bottom:1px solid var(--line2)}
   .foot a:hover{color:var(--accent);border-color:var(--accent)}
 
-  @media (max-width:900px){
-    .hero-in{grid-template-columns:1fr;gap:48px}
+  /* 平板 */
+  @media (max-width:980px){
+    .hero-in{grid-template-columns:1fr;gap:40px}
     .stage{align-items:flex-start}
-    .phone{width:272px}
+    .phone{width:252px}
+    .stage-cap{margin-left:0}
     .spec-in{grid-template-columns:1fr 1fr}
-    .spec-in div:nth-child(3){border-left:0;padding-left:0}
+    .spec-in div{padding:18px 0 16px 20px}
+    .spec-in div:nth-child(odd){border-left:0;padding-left:0}
+    .spec-in div:nth-child(n+3){border-top:1px solid var(--line)}
     .feats{grid-template-columns:1fr;gap:0}
-    .install{grid-template-columns:1fr;gap:34px}
+    .install{grid-template-columns:1fr;gap:30px}
   }
-  @media (max-width:540px){
-    .wrap{width:min(1120px,100% - 32px)}
-    .hero{padding:52px 0 48px}
-    section{padding:52px 0}
+
+  /* 手机 */
+  @media (max-width:560px){
+    .wrap{width:min(1120px,100% - 36px)}
+    .nav-in{height:52px;gap:9px}
     .nav .ver,.nav a.gh{display:none}
+    .brand{font-size:14.5px}
+    .brand img{width:22px;height:22px}
+    .hero{padding:40px 0 36px}
+    .hero-in{gap:32px}
+    h1{font-size:31px;line-height:1.16;letter-spacing:-.035em;margin-bottom:14px}
+    .lede{font-size:14.5px;line-height:1.78}
+    .cta{display:grid;gap:12px;margin-top:22px;justify-items:center}
+    .btn{width:100%;padding:13px 18px;font-size:13.5px;justify-content:center}
+    .link{font-size:13px;order:2;border-bottom:0;text-decoration:underline;text-underline-offset:3px;color:var(--muted)}
+    .note{font-size:11.5px}
+    .phone{width:min(78vw,240px);border-radius:14px}
+    .stage{align-items:center;width:100%}
+    .stage::before{inset:-6% -10%}
+    .stage-cap{text-align:center;letter-spacing:.12em}
+    .spec-in b{font-size:19px}
+    section{padding:44px 0}
+    h2{font-size:21px}
+    .sec-head{margin-bottom:24px}
+    .sec-head p{font-size:13.5px}
+    .feat{padding:14px 0}
+    .install{padding-top:40px}
+    .install p{font-size:13.5px}
+    footer{padding:22px 0 36px}
+    .foot{font-size:11.5px;gap:10px}
   }
 </style>
 </head>
@@ -148,7 +177,7 @@
     </div>
 
     <div class="stage">
-      <div class="phone"><img src="img/home.jpg" alt="文件收纳盒主界面" width="540" height="1110"></div>
+      <div class="phone"><img src="img/home.jpg" alt="文件收纳盒主界面"></div>
       <p class="stage-cap mono">真机截图 · 经典白</p>
     </div>
   </div>
