@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>文件收纳盒 · 分享即收纳</title>
+<meta name="description" content="439KB 的 Android 文件收纳盒：分享即收纳、八类自动分类、十种皮肤、完全离线、无网络权限。">
+<style>
+  :root{
+    --bg:#080b12; --bg2:#0f1420; --card:#141a28; --line:#243044;
+    --text:#eef3fb; --sub:#8fa0bf; --accent:#3b6bff; --accent2:#8cb4ff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  a{color:inherit;text-decoration:none}
+
+  /* hero */
+  header{position:relative;overflow:hidden;padding:88px 0 64px;text-align:center}
+  header::before{
+    content:"";position:absolute;inset:-40% -20% auto -20%;height:640px;
+    background:radial-gradient(closest-side,rgba(59,107,255,.32),transparent 70%);
+    filter:blur(10px);z-index:0;
+  }
+  header .wrap{position:relative;z-index:1}
+  .logo{
+    width:96px;height:96px;border-radius:24px;margin:0 auto 26px;
+    background:linear-gradient(160deg,#7aa2ff,#2f52d8);
+    box-shadow:0 18px 48px rgba(59,107,255,.42),inset 0 1px 0 rgba(255,255,255,.5);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .logo svg{width:52px;height:52px}
+  h1{font-size:clamp(30px,5vw,46px);letter-spacing:.5px;font-weight:800}
+  .slogan{margin-top:14px;font-size:clamp(15px,2.2vw,19px);color:var(--sub)}
+  .badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:26px 0 30px}
+  .badge{
+    font-size:13px;color:var(--accent2);border:1px solid var(--line);
+    background:rgba(59,107,255,.08);padding:6px 14px;border-radius:99px;
+  }
+  .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 30px;border-radius:14px;font-weight:700;font-size:16px;
+    transition:transform .16s ease,box-shadow .16s ease;
+  }
+  .btn-primary{background:linear-gradient(160deg,#4a78ff,#2f52d8);box-shadow:0 12px 30px rgba(59,107,255,.4)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(59,107,255,.5)}
+  .btn-ghost{border:1px solid var(--line);color:var(--sub)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--text)}
+  .meta{margin-top:18px;font-size:13px;color:#5f708c}
+
+  section{padding:64px 0;border-top:1px solid rgba(36,48,68,.6)}
+  h2{font-size:clamp(22px,3.4vw,30px);font-weight:800;margin-bottom:8px}
+  .lead{color:var(--sub);margin-bottom:34px;font-size:15px}
+
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .card{
+    background:linear-gradient(180deg,var(--card),#111725);
+    border:1px solid var(--line);border-radius:18px;padding:22px;
+  }
+  .card h3{font-size:16px;margin-bottom:8px}
+  .card p{font-size:14px;color:var(--sub)}
+  .ico{width:34px;height:34px;border-radius:10px;background:rgba(59,107,255,.16);
+       display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+       color:var(--accent2);font-weight:800;font-size:15px}
+
+  .shots{display:flex;gap:18px;overflow-x:auto;padding:6px 2px 18px;scroll-snap-type:x mandatory}
+  .shots img{
+    width:250px;border-radius:20px;border:1px solid var(--line);
+    scroll-snap-align:start;background:#fff;
+  }
+  .shots::-webkit-scrollbar{height:8px}
+  .shots::-webkit-scrollbar-thumb{background:#22304a;border-radius:9px}
+
+  .spec{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));font-size:14px}
+  .spec div{display:flex;justify-content:space-between;padding:12px 16px;background:var(--card);
+            border:1px solid var(--line);border-radius:12px;color:var(--sub)}
+  .spec b{color:var(--text);font-weight:600}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--accent2);
+       word-break:break-all}
+  footer{padding:44px 0 60px;text-align:center;color:#5f708c;font-size:13px}
+  footer a{color:var(--accent2)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 14h12l4 5h20v19a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V14z"/>
+        <path d="M6 14V9a2 2 0 0 1 2-2h9l4 5h17a2 2 0 0 1 2 2v5"/>
+      </svg>
+    </div>
+    <h1>文件收纳盒</h1>
+    <p class="slogan">分享即收纳 —— 手机文件自动分类归档，439KB 极简存在</p>
+    <div class="badges">
+      <span class="badge">439 KB</span>
+      <span class="badge">完全离线</span>
+      <span class="badge">无网络权限</span>
+      <span class="badge">十种皮肤</span>
+      <span class="badge">Android 7.0+</span>
+    </div>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://github.com/YanXi20110914/filebox/releases/download/v1.0.0/FileBox_v1.0.0_release.apk">
+        ⬇ 下载 APK · 439KB
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/YanXi20110914/filebox">查看源码 →</a>
+    </div>
+    <p class="meta">v1.0.0 Spark (42) ｜ 正式签名 RSA 2048 / 25 年 ｜ 包名 com.filebox.collect</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>你的手机文件，值得一间整洁的房间</h2>
+    <p class="lead">截图、文档、安装包、压缩包……每一次"下载"都在给存储空间添堵。文件收纳盒只做一件事：让你顺手把文件放对地方。</p>
+    <div class="grid">
+      <div class="card"><div class="ico">收</div><h3>分享即收纳</h3><p>微信、浏览器、文件管理器里点分享就能归档，自动识别类型，全程不超过 3 秒。</p></div>
+      <div class="card"><div class="ico">类</div><h3>八类自动识别</h3><p>图片 / 文档 / 视频 / 音频 / 安装包 / 压缩包 / 字体 / 其他，还支持自定义分类规则。</p></div>
+      <div class="card"><div class="ico">名</div><h3>链式防覆盖命名</h3><p>同名不覆盖：跨年补年份、同年补日期、同日补时分秒，文件再多也不丢。</p></div>
+      <div class="card"><div class="ico">肤</div><h3>十种界面皮肤</h3><p>经典白到工作台，布局重排、桌面图标联动、专属 3D 开场动画，连状态栏都换装。</p></div>
+      <div class="card"><div class="ico">搜</div><h3>全局搜索 + 历史</h3><p>按名称、分类、来源、时间四维筛选；星标与备注，重要文件一眼定位。</p></div>
+      <div class="card"><div class="ico">记</div><h3>文本速记</h3><p>微信里看到一段有用的文字，分享给收纳盒就直接存成 .txt 笔记。</p></div>
+      <div class="card"><div class="ico">私</div><h3>不联网的隐私</h3><p>未申请 INTERNET 权限，物理级离线；数据只存本机，卸载即彻底删除。</p></div>
+      <div class="card"><div class="ico">轻</div><h3>439KB 且零后台</h3><p>一张照片的几分之一，不常驻通知栏、不注册自启、不开屏广告。</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>界面预览</h2>
+    <p class="lead">真机截图，1080×2340。</p>
+    <div class="shots">
+      <img src="../images/store_01.png" alt="分享即收纳">
+      <img src="../images/store_02.png" alt="三秒归档">
+      <img src="../images/store_03.png" alt="细节可调">
+      <img src="../images/store_04.png" alt="深夜模式">
+      <img src="../images/store_05.png" alt="终端皮肤">
+      <img src="../images/store_poster.png" alt="十款皮肤" style="width:290px">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>安装</h2>
+    <p class="lead">下载后允许「安装未知应用」即可。系统要求 Android 7.0+；装过测试签名的设备请先卸载旧版。</p>
+    <div class="spec">
+      <div><span>版本</span><b>1.0.0 (42)</b></div>
+      <div><span>安装包</span><b>439 KB</b></div>
+      <div><span>最低系统</span><b>Android 7.0</b></div>
+      <div><span>网络权限</span><b>未申请</b></div>
+    </div>
+    <p class="meta" style="margin-top:18px">SHA-256：<code>b2603dede355c679ab2ce1ce78a813b451d93ec63514bbf7f3fc7c28e339951c</code></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>开发者 晏席 ｜ <a href="https://github.com/YanXi20110914/filebox">GitHub 仓库</a> ｜ <a href="https://github.com/YanXi20110914/filebox/releases">更新日志</a></p>
+    <p style="margin-top:8px">文件收纳盒 v1.0.0 Spark · 完全离线 · 无广告无追踪</p>
+  </div>
+</footer>
+
+</body>
+</html>
