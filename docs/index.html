@@ -64,8 +64,9 @@
   .stage::before{content:"";position:absolute;inset:-18% -12% -12% -6%;background-image:radial-gradient(circle at 1px 1px,rgba(20,20,19,.16) 1px,transparent 0);background-size:14px 14px;opacity:.5;-webkit-mask-image:radial-gradient(ellipse at 60% 40%,#000 25%,transparent 72%);mask-image:radial-gradient(ellipse at 60% 40%,#000 25%,transparent 72%);z-index:0;pointer-events:none}
   .phone{position:relative;z-index:1;border-radius:18px;overflow:hidden;border:1px solid rgba(20,20,19,.1);box-shadow:0 24px 50px -30px rgba(20,20,19,.55)}
   .phone img{width:100%}
-  .p1{width:52%}
-  .p2{width:44%;margin-top:58px}
+  .p1{width:47%}
+  .p2{width:39%;margin-top:44px}
+  .stage-cap{grid-column:2;text-align:right;margin:14px 2px 0;font-size:10.5px;letter-spacing:.1em;color:var(--muted)}
 
   /* 规格条 */
   .spec{border-bottom:1px solid var(--line)}
@@ -113,7 +114,8 @@
   @media (max-width:900px){
     .hero-in{grid-template-columns:1fr;gap:44px}
     .stage{justify-content:flex-start}
-    .p1{width:56%}.p2{width:44%;margin-top:34px}
+    .stage-cap{grid-column:1;text-align:left}
+    .p1{width:50%}.p2{width:42%;margin-top:28px}
     .spec-in{grid-template-columns:1fr 1fr}
     .spec-in div:nth-child(3){border-left:0;padding-left:0}
     .feats{grid-template-columns:1fr;gap:0}
@@ -161,6 +163,7 @@
       <div class="phone p1"><img src="img/home.jpg" alt="文件收纳盒主界面" width="540" height="1110"></div>
       <div class="phone p2"><img src="img/terminal.jpg" alt="终端皮肤" width="540" height="1110"></div>
     </div>
+    <p class="stage-cap mono">经典白 / 终端 · 真机截图</p>
   </div>
 </header>
 
