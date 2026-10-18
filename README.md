@@ -5,7 +5,9 @@
 **v1.0.0 Spark** ｜ Android 7.0+（minSdk 24）｜ 439 KB ｜ 完全离线 ｜ 无网络权限 ｜ 无广告无追踪
 
 <p>
-  <a href="apk/FileBox_v1.0.0_release.apk"><b>⬇ 下载 APK（439KB）</b></a>
+  <a href="https://github.com/YanXi20110914/filebox/releases/download/v1.0.0/FileBox_v1.0.0_release.apk"><b>⬇ 下载 APK（439KB）</b></a>
+  &nbsp;·&nbsp;
+  <a href="https://yanxi20110914.github.io/filebox/">在线主页</a>
 </p>
 
 ![主界面](images/store_01.png)
@@ -109,6 +111,10 @@ FileBox/
 ├── video/      promo_60s.mp4                  # 60 秒宣传片
 └── docs/       商店文案完整版
 ```
+
+## 在线主页
+
+GitHub Pages：<https://yanxi20110914.github.io/filebox/> （源码在 `docs/index.html`）
 
 ## 签名
 
